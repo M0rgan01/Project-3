@@ -7,10 +7,9 @@ import javax.swing.JPanel;
 public abstract class Container extends JPanel{
 	
 	protected JPanel panel;
-	protected Font comics30 = new Font("Comics Sans MS", Font.BOLD, 30);
-	protected Font comics40 = new Font("Comics Sans MS", Font.BOLD, 40);
+	protected Font comics30 = new Font("Comics Sans MS", Font.BOLD, 28);
 	protected Font comics20 = new Font("Comics Sans MS", Font.BOLD, 20);
-	
+	protected Font comics15 = new Font("Comics Sans MS", Font.BOLD, 15);
 	
 	
 	public Container() {

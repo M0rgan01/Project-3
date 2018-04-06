@@ -23,18 +23,18 @@ public class Fenetre extends JFrame{
 	private JMenuItem itemModeDuel2 = new JMenuItem("Mode duel");
 	private JMenuItem itemQuitter = new JMenuItem("Quitter");
 	private JMenuItem itemApropos = new JMenuItem("?");
-	private boolean Acceuil = true,
-					PlusoumoinsChallenger = false,
-					PlusoumoinsDefenseur = false,
-					PlusoumoinsDuel = false,
-					MastermindChallenger = false,
-					MastermindDefenseur = false,
-					MastermindDuel = false;
+	private boolean AcceuilB = true,
+					PlusoumoinsChallengerB = false,
+					PlusoumoinsDefenseurB = false,
+					PlusoumoinsDuelB = false,
+					MastermindChallengerB = false,
+					MastermindDefenseurB = false,
+					MastermindDuelB = false;
 	
 	
 	public Fenetre() {
 		this.setTitle("Project 3");
-		this.setSize(700, 600);
+		this.setSize(700, 500);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
@@ -59,7 +59,8 @@ public class Fenetre extends JFrame{
 		menuBar.add(menuFichier);
 		menuBar.add(menuApropos);
 		this.setJMenuBar(menuBar);
-	
+		PlusOuMoinsChallenger p = new PlusOuMoinsChallenger();
+		this.setContentPane(p.getPanel());
 		this.setVisible(true);
 	}
 	
