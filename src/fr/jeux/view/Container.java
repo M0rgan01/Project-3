@@ -1,6 +1,7 @@
 package fr.jeux.view;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.JPanel;
 
@@ -24,7 +25,7 @@ public abstract class Container extends JPanel{
 
 	protected abstract void initPanel();
 
-}
+ }
 	
 	
 	

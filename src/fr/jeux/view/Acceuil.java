@@ -1,5 +1,7 @@
 package fr.jeux.view;
 
+import java.awt.Dimension;
+
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
