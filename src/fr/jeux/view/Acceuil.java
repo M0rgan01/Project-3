@@ -1,12 +1,12 @@
 package fr.jeux.view;
 
-import java.awt.Dimension;
-
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import fr.jeux.model.Logging;
 
 public class Acceuil extends Container {
+
 
 	private JLabel titre = new JLabel("Bienvenue dans l'application du project 3 de openclassrooms");
 	private JTextArea explication1 = new JTextArea("Dans cette application, vous aurez le choix entre 2 jeux : \n"
@@ -18,10 +18,12 @@ public class Acceuil extends Container {
 												+ " - Le mode Duel, où l'ordinateur et vous jouez tour à tour,\n   le premier à trouver la combinaison secrète de l'autre a gagné.");
 	private JTextArea explication3 = new JTextArea("Pour commencer un jeu, entrer dans le menu Fichier,\n"
 												+ "choisissez votre jeu et votre mode parmis ceux proposés.");
+
 	
 	public Acceuil() {
 	super();
 	initPanel();
+	Logging.logger.info("Initialisation Acceuil");
 	}
 	
 	
@@ -40,7 +42,9 @@ public class Acceuil extends Container {
 	this.panel.add(titre);
 	this.panel.add(explication1);
 	this.panel.add(explication2);
-	this.panel.add(explication3);
+	this.panel.add(explication3);	
 	}
+	
+	
 
 }

@@ -2,10 +2,12 @@ package fr.jeux.view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 public class Fenetre extends JFrame {
 
@@ -24,8 +26,7 @@ public class Fenetre extends JFrame {
 	private JMenuItem itemQuitter = new JMenuItem("Quitter");
 	private JMenuItem itemApropos = new JMenuItem("?");
 	private boolean AcceuilB = true, PlusoumoinsChallengerB = false, PlusoumoinsDefenseurB = false,
-			PlusoumoinsDuelB = false, MastermindChallengerB = false, MastermindDefenseurB = false,
-			MastermindDuelB = false;
+			PlusoumoinsDuelB = false, MastermindChallengerB = false, MastermindDefenseurB = false;
 
 	public Fenetre() {
 
@@ -34,8 +35,9 @@ public class Fenetre extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
-		
+
 		itemModeChallenger.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent arg0) {
 				AcceuilB = false;
 				PlusoumoinsChallengerB = true;
@@ -43,14 +45,12 @@ public class Fenetre extends JFrame {
 				PlusoumoinsDuelB = false;
 				MastermindChallengerB = false;
 				MastermindDefenseurB = false;
-				MastermindDuelB = false;
 				initContainer();
 			}
 		});
 
 		itemModeDefenseur.addActionListener(new ActionListener() {
-			
-			@Override
+
 			public void actionPerformed(ActionEvent arg0) {
 				AcceuilB = false;
 				PlusoumoinsChallengerB = false;
@@ -58,15 +58,13 @@ public class Fenetre extends JFrame {
 				PlusoumoinsDuelB = false;
 				MastermindChallengerB = false;
 				MastermindDefenseurB = false;
-				MastermindDuelB = false;
 				initContainer();
-				
+
 			}
 		});
-		
+
 		itemModeDuel.addActionListener(new ActionListener() {
-			
-			@Override
+
 			public void actionPerformed(ActionEvent arg0) {
 				AcceuilB = false;
 				PlusoumoinsChallengerB = false;
@@ -74,14 +72,12 @@ public class Fenetre extends JFrame {
 				PlusoumoinsDuelB = true;
 				MastermindChallengerB = false;
 				MastermindDefenseurB = false;
-				MastermindDuelB = false;
 				initContainer();
 			}
 		});
-		
+
 		itemModeChallenger2.addActionListener(new ActionListener() {
-			
-			
+
 			public void actionPerformed(ActionEvent arg0) {
 				AcceuilB = false;
 				PlusoumoinsChallengerB = false;
@@ -89,12 +85,47 @@ public class Fenetre extends JFrame {
 				PlusoumoinsDuelB = false;
 				MastermindChallengerB = true;
 				MastermindDefenseurB = false;
-				MastermindDuelB = false;
 				initContainer();
-				
+
 			}
 		});
-		
+
+		itemModeDefenseur2.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+				AcceuilB = false;
+				PlusoumoinsChallengerB = false;
+				PlusoumoinsDefenseurB = false;
+				PlusoumoinsDuelB = false;
+				MastermindChallengerB = false;
+				MastermindDefenseurB = true;
+				initContainer();
+
+			}
+		});
+
+		itemModeDuel2.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+				AcceuilB = false;
+				PlusoumoinsChallengerB = false;
+				PlusoumoinsDefenseurB = false;
+				PlusoumoinsDuelB = false;
+				MastermindChallengerB = false;
+				MastermindDefenseurB = false;
+				initContainer();
+
+			}
+		});
+
+		itemApropos.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(null, "Project 3 - Java\n" + "Par Pichat Morgan", "A propos",
+						JOptionPane.INFORMATION_MESSAGE);
+
+			}
+		});
 		menuJeuPlusOuMoins.add(itemModeChallenger);
 		menuJeuPlusOuMoins.add(itemModeDefenseur);
 		menuJeuPlusOuMoins.add(itemModeDuel);
@@ -119,6 +150,7 @@ public class Fenetre extends JFrame {
 		initContainer();
 	}
 
+	// méthode pour définir le panel
 	public void initContainer() {
 
 		if (AcceuilB) {
@@ -127,34 +159,45 @@ public class Fenetre extends JFrame {
 			this.setContentPane(acceuil.getPanel());
 		}
 
-		if (PlusoumoinsChallengerB) {
+		else if (PlusoumoinsChallengerB) {
 			PlusOuMoinsChallenger POMC = new PlusOuMoinsChallenger();
-			this.setSize(700, 500);
+			this.setSize(600, 500);
 			this.setContentPane(POMC.getPanel());
 			repaint();
 		}
-		
-		if (PlusoumoinsDefenseurB) {
+
+		else if (PlusoumoinsDefenseurB) {
 			PlusOuMoinsDefenseur POMD = new PlusOuMoinsDefenseur();
-			this.setSize(700, 500);
+			this.setSize(600, 500);
 			this.setContentPane(POMD.getPanel());
 			repaint();
 		}
-		
-		if (PlusoumoinsDuelB) {
+
+		else if (PlusoumoinsDuelB) {
 			PlusOuMoinsDuel POMDuel = new PlusOuMoinsDuel();
 			this.setSize(700, 600);
 			this.setContentPane(POMDuel.getPanel());
 			repaint();
-		}
-		if (MastermindChallengerB) {
+
+		} else if (MastermindChallengerB) {
 			MastermindChallenger MMC = new MastermindChallenger();
-			this.setSize(700, 600);
+			this.setSize(700, 550);
 			this.setContentPane(MMC.getPanel());
 			repaint();
+
+		} else if (MastermindDefenseurB) {
+			MastermindDefenseur MMD = new MastermindDefenseur();
+			this.setSize(700, 550);
+			this.setContentPane(MMD.getPanel());
+			repaint();
+
+		} else {
+			MastermindDuel MMDuel = new MastermindDuel();
+			this.setSize(700, 600);
+			this.setContentPane(MMDuel.getPanel());
+			repaint();
 		}
+
 		this.setVisible(true);
-
 	}
-
 }
