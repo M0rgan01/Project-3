@@ -42,7 +42,7 @@ public class PlusOuMoinsDuel extends Container {
 	private JTextArea explication = new JTextArea("Saissisez un nombre entre " + Min + " et " + Max
 			+ ", \nl'ordinateur devra trouver le nombre secret, et vous devrez trouver le sien !\n"
 			+ "\nLe premier à trouver le bon nombre à gagné !\n"
-			+ "Si l'un des deux joueurs n'a plus d'essais, son opposent gagne la partie.");
+			+ "Si l'un des deux joueurs n'a plus d'essais, son opposant gagne la partie.");
 	private JTextArea défilement = new JTextArea();
 	private JTextArea défilement2 = new JTextArea();
 	private JScrollPane scroll = new JScrollPane(défilement);
@@ -177,17 +177,17 @@ public class PlusOuMoinsDuel extends Container {
 	}
 
 	public void TexteSupérieurIA() {
-		défilement2.append(" Le nombre trouver par l'ordinateur est trop grand\n");
+		défilement2.append(" Le nombre trouvé par l'ordinateur est trop grand\n");
 		défilement2.append(" -----------------------------\n");
 	}
 
 	public void TexteInférieurIA() {
-		défilement2.append(" Le nombre trouver par l'ordinateur est trop petit\n");
+		défilement2.append(" Le nombre trouvé par l'ordinateur est trop petit\n");
 		défilement2.append(" -----------------------------\n");
 	}
 
 	public void TexteGagnéIA() {
-		défilement2.append(" L'ordinateur à gagné !\n");
+		défilement2.append(" L'ordinateur a gagné !\n");
 		défilement2.append(" -----------------------------\n");
 	}
 
@@ -197,7 +197,7 @@ public class PlusOuMoinsDuel extends Container {
 					+ "Vous pouvez changer de jeu ou recommencer depuis le menu fichier");
 			restart();
 		} else {
-			JOptionPane.showMessageDialog(null, "L'ordinateur a trouvé le nombre secret !\n" + "La réponse étais "
+			JOptionPane.showMessageDialog(null, "L'ordinateur a trouvé le nombre secret !\n" + "La réponse était "
 					+ nombre_secret + "\n" + "Vous pouvez changer de jeu ou recommencer depuis le menu fichier");
 			restart();
 		}

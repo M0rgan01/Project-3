@@ -31,7 +31,7 @@ public class PlusOuMoinsDefenseur extends Container {
 	private String difficulty = FC.getDifficulty();
 	private JLabel titre = new JLabel("Plus ou moins : Mode Défenseur"),
 			difficultyLabel = new JLabel("Difficulté : " + difficulty),
-			nombreEssai = new JLabel("Nombre d'essaie restant : " + essai),
+			nombreEssai = new JLabel("Nombre d'essai restant : " + essai),
 			annonceLabel = new JLabel("Saisir un nombre :"),
 			devLabel = new JLabel("Mode développeur activé, réponse : " + nombre_secret);
 	private JTextArea explication = new JTextArea(
@@ -126,10 +126,10 @@ public class PlusOuMoinsDefenseur extends Container {
 			// si le montant est supérieurs
 			if (nombre_secret < nombre_user) {
 				défilement.append("L'ordinateur donne la valeur " + nombre_user + "\n");
-				défilement.append("Le nombre trouver par l'ordinateur est trop grand\n");
+				défilement.append("Le nombre trouvé par l'ordinateur est trop grand\n");
 				défilement.append("-----------------------------\n");
 				essai--;
-				nombreEssai.setText("Nombre d'essaie restant : " + essai);
+				nombreEssai.setText("Nombre d'essai restant : " + essai);
 				//Nous attribuons le chiffre trouver par l'ia au montant maximal
 				Max = nombre_user;
 				nombre_user = (Max + Min) / 2;
@@ -137,10 +137,10 @@ public class PlusOuMoinsDefenseur extends Container {
 			} // sinon il est inférieur
 			else {
 				défilement.append("L'ordinateur donne la valeur " + nombre_user + "\n");
-				défilement.append("Le nombre trouver par l'ordinateur est trop petit\n");
+				défilement.append("Le nombre trouvé par l'ordinateur est trop petit\n");
 				défilement.append("-----------------------------\n");
 				essai--;
-				nombreEssai.setText("Nombre d'essaie restant : " + essai);
+				nombreEssai.setText("Nombre d'essai restant : " + essai);
 				//Nous attribuons le chiffre trouver par l'ia au montant minimal
 				Min = nombre_user;
 				nombre_user = (Min + Max) / 2;
@@ -161,14 +161,14 @@ public class PlusOuMoinsDefenseur extends Container {
 	}
 
 	public void perdu() {
-		JOptionPane.showMessageDialog(null, "L'ordinateur a perdu ! La réponse étais " + afficher_secret + "\n"
+		JOptionPane.showMessageDialog(null, "L'ordinateur a perdu ! La réponse était " + afficher_secret + "\n"
 				+ "Vous pouvez changer de jeu ou recommencer depuis le menu fichier");
 		défilement.append("Le nombre d'essai de l'ordinateur est a 0.");
 		restart();
 	}
 
 	public void gagné() {
-		JOptionPane.showMessageDialog(null, "L'ordinateur à trouver le nombre secret !\n"
+		JOptionPane.showMessageDialog(null, "L'ordinateur a trouvé le nombre secret !\n"
 				+ "Vous pouvez changer de jeu ou recommencer depuis le menu fichier");
 		restart();
 	}
@@ -194,7 +194,7 @@ public class PlusOuMoinsDefenseur extends Container {
 				restartB = false;
 				button.setText("OK");
 				essai = FC.getNombreEssai();
-				nombreEssai.setText("Nombre d'essaie restant : " + essai);
+				nombreEssai.setText("Nombre d'essai restant : " + essai);
 
 			}
 			// nous vérifions que les données saisies sont conforment

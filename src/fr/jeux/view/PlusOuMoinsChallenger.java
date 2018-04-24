@@ -31,7 +31,7 @@ public class PlusOuMoinsChallenger extends Container {
 	private String difficulty = FC.getDifficulty();
 	private JLabel titre = new JLabel("Plus ou moins : Mode Challenger"),
 			difficultyLabel = new JLabel("Difficulté : " + difficulty),
-			nombreEssai = new JLabel("Nombre d'essaie restant : " + essai),
+			nombreEssai = new JLabel("Nombre d'essai restant : " + essai),
 			annonceLabel = new JLabel("Saisir un nombre :"),
 			devLabel = new JLabel("Mode développeur activé, réponse : " + nombre_secret);
 	private JTextArea explication = new JTextArea(
@@ -140,13 +140,13 @@ public class PlusOuMoinsChallenger extends Container {
 	}
 
 	public void perdu() {
-		JOptionPane.showMessageDialog(null, "Vous avez perdu ! La réponse étais " + nombre_secret + "\n"
+		JOptionPane.showMessageDialog(null, "Vous avez perdu ! La réponse était " + nombre_secret + "\n"
 				+ "Vous pouvez changer de jeu ou recommencer depuis le menu fichier");
 		restart();
 	}
 
 	public void gagné() {
-		JOptionPane.showMessageDialog(null, "Vous avez trouver le nombre secret !\n"
+		JOptionPane.showMessageDialog(null, "Vous avez trouvé le nombre secret !\n"
 				+ "Vous pouvez changer de jeu ou recommencer depuis le menu fichier");
 		restart();
 	}
@@ -171,7 +171,7 @@ public class PlusOuMoinsChallenger extends Container {
 				restartB = false;
 				button.setText("OK");
 				essai = FC.getNombreEssai();
-				nombreEssai.setText("Nombre d'essaie restant : " + essai);
+				nombreEssai.setText("Nombre d'essai restant : " + essai);
 
 				// nous vérifions que les données saisies sont conforment
 			} else if (getAnnonce() < 1 || getAnnonce() > (Max - 1)) {

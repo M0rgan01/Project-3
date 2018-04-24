@@ -1,7 +1,4 @@
-2018-04-24 16:47:45.838 INFO     [main]:fr.jeux.view.Acceuil - Initialisation Acceuil
-2018-04-24 16:47:50.946 INFO     [AWT-EventQueue-0]:fr.jeux.model.FichierConfig - Chargement fichier config.properties
-2018-04-24 16:47:50.947 INFO     [AWT-EventQueue-0]:fr.jeux.model.FichierConfig - Initialisation difficulté
-2018-04-24 16:47:50.957 INFO     [AWT-EventQueue-0]:fr.jeux.view.PlusOuMoinsDefenseur - Initialisation PlusOuMoinsDefenseur
-2018-04-24 16:47:55.813 INFO     [Thread-0]:fr.jeux.view.PlusOuMoinsDefenseur - Vérification du nombre
-2018-04-24 16:47:57.815 INFO     [Thread-0]:fr.jeux.view.PlusOuMoinsDefenseur - Vérification du nombre
-2018-04-24 16:48:06.400 INFO     [AWT-EventQueue-0]:fr.jeux.view.PlusOuMoinsDefenseur$Listener - Restart : génération d'une nouvelle partie
+2018-04-24 18:34:25.207 INFO     [main]:fr.jeux.view.Acceuil - Initialisation Acceuil
+2018-04-24 18:34:28.189 INFO     [AWT-EventQueue-0]:fr.jeux.model.FichierConfig - Chargement fichier config.properties
+2018-04-24 18:34:28.191 INFO     [AWT-EventQueue-0]:fr.jeux.model.FichierConfig - Initialisation difficulté
+2018-04-24 18:34:28.202 INFO     [AWT-EventQueue-0]:fr.jeux.view.MastermindDefenseur - Initialisation MastermindDefenseur

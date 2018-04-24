@@ -17,7 +17,7 @@ le premier à trouver la combinaison secrète de l'autre a gagné.
 - Lancez un IDE
 - Créer un nouveau projet avec le repository cloner
 - Ajouter log4j à la librairie du projet
-- Utiliser la classe Driver du package fr.jeux pour lancez l'application
+- Utiliser la classe Driver du package fr.jeux pour lancer l'application
 
 ## Configuration
 

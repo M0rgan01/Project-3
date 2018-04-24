@@ -41,9 +41,9 @@ public class MastermindDuel extends Container {
 			"\tMode développeur activé !\n Réponse du joueur:  " + NB_CHIFFRES + "\tRéponse de l'ordinateur : ");
 	private JTextArea explication = new JTextArea("Saissisez une combinaison secrète de " + NB_CHIFFRES + " chiffres"
 			+ ", \nl'ordinateur devra trouver cette combinaison, et vous devrez trouver la sienne !\n"
-			+ "\nLe premier à trouver la combinaison de l'autre à gagné,\n"
-			+ "si l'un des deux joueurs n'a plus d'essais, son opposent gagne la partie.\n"
-			+ "Les chiffres des combinaison vont de 1 à " + FC.getNombreMaxMastermind());
+			+ "\nLe premier à trouver la combinaison de l'autre a gagné,\n"
+			+ "si l'un des deux joueurs n'a plus d'essai, son opposant gagne la partie.\n"
+			+ "Les chiffres des combinaisons vont de 1 à " + FC.getNombreMaxMastermind());
 	private JTextArea défilement = new JTextArea();
 	private JTextArea défilement2 = new JTextArea();
 	private JScrollPane scroll = new JScrollPane(défilement);
@@ -153,7 +153,7 @@ public class MastermindDuel extends Container {
 		int malplacé = 0;
 		int bienplacé = 0;
 
-		défilement.append(" Vous avez saisie ");
+		défilement.append(" Vous avez saisi ");
 
 		// Boucle pour écrire notre saisie dans la texteArea
 		for (int i = 0; i < NB_CHIFFRES; i++)

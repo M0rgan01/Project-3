@@ -32,12 +32,12 @@ public class MastermindDefenseur extends Container {
 	private String difficulty = FC.getDifficulty();
 	private JLabel titre = new JLabel("Mastermind : Mode Defenseur"),
 			difficultyLabel = new JLabel("Difficulté : " + difficulty),
-			nombreEssai = new JLabel("Nombre d'essaie restant : " + essais),
+			nombreEssai = new JLabel("Nombre d'essai restant : " + essais),
 			annonceLabel = new JLabel("Saisir un nombre :"), devLabel = new JLabel();
 	private JTextArea explication = new JTextArea(
 			"L'ordinateur doit trouver votre combinaison secrete à " + FC.getNombre_chiffre() + " chiffres,\n"
 					+ "pour l'aidez, des indicateurs guideront l'ordinateur de manière automatique :\n"
-					+ "- Combien de chiffres sont bien placé.\n" + "- Combien de chiffres sont bon mais mal placé.\n"
+					+ "- Combien de chiffres sont bien placés.\n" + "- Combien de chiffres sont bons mais mal placés.\n"
 					+ "Les chiffres de la combinaison vont de 1 à " + FC.getNombreMaxMastermind());
 	private JTextArea défilement = new JTextArea();
 	private JScrollPane scroll = new JScrollPane(défilement);
@@ -152,7 +152,7 @@ public class MastermindDefenseur extends Container {
 			}
 
 			essais--;
-			nombreEssai.setText("Nombre d'essaie restant : " + essais);
+			nombreEssai.setText("Nombre d'essai restant : " + essais);
 
 			// On détermine le nombre de bien placés et mal placés
 			bienplacé = m.nbBienPlace(solution, chiffresTenté, NB_CHIFFRES);
@@ -201,7 +201,7 @@ public class MastermindDefenseur extends Container {
 								chiffresTenté[i] = chiffresTrouvé[i];
 						}
 						essais--;
-						nombreEssai.setText("Nombre d'essaie restant : " + essais);
+						nombreEssai.setText("Nombre d'essai restant : " + essais);
 
 						bienplacé = m.nbBienPlace(solution, chiffresTenté, NB_CHIFFRES);
 						malplacé = m.nbCommuns(solution, chiffresTenté, NB_CHIFFRES) - bienplacé;
@@ -234,13 +234,13 @@ public class MastermindDefenseur extends Container {
 	}
 
 	public void perdu() {
-		JOptionPane.showMessageDialog(null, "L'ordinateur à perdu ! La réponse étais " + Arrays.toString(solution)
+		JOptionPane.showMessageDialog(null, "L'ordinateur a perdu ! La réponse était " + Arrays.toString(solution)
 				+ "\n" + "Vous pouvez changer de jeu ou recommencer depuis le menu fichier");
 		restart();
 	}
 
 	public void gagné() {
-		JOptionPane.showMessageDialog(null, "L'ordinateur à trouver le nombre secret !\n"
+		JOptionPane.showMessageDialog(null, "L'ordinateur a trouvé le nombre secret !\n"
 				+ "Vous pouvez changer de jeu ou recommencer depuis le menu fichier");
 		restart();
 	}
@@ -265,7 +265,7 @@ public class MastermindDefenseur extends Container {
 					annonce[i].setEditable(true);
 				}
 				essais = FC.getNombreEssai();
-				nombreEssai.setText("Nombre d'essaie restant : " + essais);
+				nombreEssai.setText("Nombre d'essai restant : " + essais);
 				restartB = false;
 			} else {
 				T = new Thread(new IA());

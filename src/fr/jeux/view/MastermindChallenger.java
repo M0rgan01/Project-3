@@ -34,11 +34,11 @@ public class MastermindChallenger extends Container {
 	private String difficulty = FC.getDifficulty();
 	private JLabel titre = new JLabel("Mastermind : Mode Challenger"),
 			difficultyLabel = new JLabel("Difficulté : " + difficulty),
-			nombreEssai = new JLabel("Nombre d'essaie restant : " + essais),
+			nombreEssai = new JLabel("Nombre d'essai restant : " + essais),
 			annonceLabel = new JLabel("Saisir un nombre :"), devLabel = new JLabel();
 	private JTextArea explication = new JTextArea("Trouver la combinaison secrete à " + FC.getNombre_chiffre()
 			+ " chiffres de l'ordinateur,\n" + "pour vous aidez, l'ordinateur vous indiquera :\n"
-			+ "- Combien de chiffres sont bien placé.\n" + "- Combien de chiffres sont bon mais mal placé.\n"
+			+ "- Combien de chiffres sont bien placés.\n" + "- Combien de chiffres sont bons mais mal placés.\n"
 			+ "Les chiffres de la combinaison vont de 1 à " + FC.getNombreMaxMastermind());
 	private JTextArea défilement = new JTextArea();
 	private JScrollPane scroll = new JScrollPane(défilement);
@@ -117,7 +117,7 @@ public class MastermindChallenger extends Container {
 		int malplacé = 0;
 		int bienplacé = 0;
 
-		défilement.append(" Vous avez saisie ");
+		défilement.append(" Vous avez saisi ");
 
 		// Boucle pour écrire notre saisie dans la texteArea
 		for (int i = 0; i < NB_CHIFFRES; i++)
@@ -132,11 +132,10 @@ public class MastermindChallenger extends Container {
 
 		if (victoire) {
 			défilement.append(" Félicitation !!!\n");
-			défilement.append(" Il vous restait " + essais + " essaie(s) avant de trouver le bon nombre\n");
 			gagné();
 		} else {
 			essais--;
-			nombreEssai.setText("Nombre d'essaie restant : " + essais);
+			nombreEssai.setText("Nombre d'essai restant : " + essais);
 			if (essais == 0) {
 				perdu();
 			}
@@ -146,13 +145,13 @@ public class MastermindChallenger extends Container {
 	}
 
 	public void perdu() {
-		JOptionPane.showMessageDialog(null, "Vous avez perdu ! La réponse étais " + Arrays.toString(solution) + "\n"
+		JOptionPane.showMessageDialog(null, "Vous avez perdu ! La réponse était " + Arrays.toString(solution) + "\n"
 				+ "Vous pouvez changer de jeu ou recommencer depuis le menu fichier");
 		restart();
 	}
 
 	public void gagné() {
-		JOptionPane.showMessageDialog(null, "Vous avez trouver le nombre secret !\n"
+		JOptionPane.showMessageDialog(null, "Vous avez trouvé le nombre secret !\n"
 				+ "Vous pouvez changer de jeu ou recommencer depuis le menu fichier");
 		restart();
 	}
@@ -194,7 +193,7 @@ public class MastermindChallenger extends Container {
 				}
 				initSolution();
 				essais = FC.getNombreEssai();
-				nombreEssai.setText("Nombre d'essaie restant : " + essais);
+				nombreEssai.setText("Nombre d'essai restant : " + essais);
 				restartB = false;
 			} else {
 				start();
