@@ -7,12 +7,12 @@ public class Mastermind {
    
         int[] t1 = new int[k];
         int[] t2 = new int[k];
+        //nous attribuons les tableau créés 
         for (int i = 0; i < k; i++) {
             t1[i] = tab1[i];
             t2[i] = tab2[i];
-        }
-        
-        int cpt = 0;
+        }      
+        int compteur = 0;
         boolean trouve = false;
         
         for (int i = 0; i < k; i++) {
@@ -20,14 +20,14 @@ public class Mastermind {
             trouve = false;
             do {
                 if (t1[i] == t2[j]) {
-                    cpt++;
+                    compteur++;
                     t2[j] = 0;
                     trouve = true;
                 }
                 j++;
             } while (j < k && !trouve);
         }        
-        return cpt;
+        return compteur;
     }
 	
 	//Renvoie le nombre de chiffres bien placé entre deux combinaisons(tableau)
@@ -39,6 +39,5 @@ public class Mastermind {
 		            }
 		        }
 		        return nb_bien_place;
-		    }
-		
+		    }	
 }

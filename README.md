@@ -13,10 +13,10 @@ Chaque jeux propose 3 modes de jeux :
 le premier à trouver la combinaison secrète de l'autre a gagné.
 
 ## Installation
--Cloner le repository
--Lancez un IDE
--Créer un nouveau projet et y ajouter les dossier du repository
--Utiliser la classe Driver du package fr.jeux pour lancez l'application
+- Cloner le repository
+- Lancez un IDE
+- Créer un nouveau projet et y ajouter les dossier du repository
+- Utiliser la classe Driver du package fr.jeux pour lancez l'application
 
 ## Configuration
 

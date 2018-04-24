@@ -167,12 +167,11 @@ public class MastermindDefenseur extends Container {
 			défilement.append(" " + malplacé + " chiffre(s) mal placé(s)\n");
 			défilement.append(" " + bienplacé + " chiffre(s) bien placé(s)\n\n");
 
-			// variable déterminant
+			
 			int nbBoules = bienplacé - nbTrouve;
 
 			// Si le chiffre tester est présent et que couleur est supérieur ou égal au max
 			if (nbBoules >= 1 && couleur <= (MAX + 1) && bienplacé != NB_CHIFFRES) {
-
 				for (int x = 1; x <= nbBoules; x++) {
 					malplacé = 1;
 					// indice de la position testé pour trouver l'emplacement de
@@ -181,41 +180,34 @@ public class MastermindDefenseur extends Container {
 					// position. Donc on crée une boucle qui cherche une
 					// position possible.
 					pos = 0;
-
 					// tant que malPlace != 0 faire
 					while (malplacé > 0 && essais > 0) {
 						// tant que pos est inférieur à NB_Chiffres et que l'index ChiffresTrouvé est
 						// différent de 0
 						while ((pos < NB_CHIFFRES) && chiffresTrouvé[pos] != 0)
 							pos++;
-
 						try {
 							Thread.sleep(1000);
 						} catch (Exception e) {
-
 						}
-
 						// On crée la nouvelle combinaison à tenté, qui cherche
 						// la position exacte du chiffre
 						// en cour. Tout en tenant compte des positions des chiffres deja trouvées
 						for (int i = 0; i < NB_CHIFFRES; i++) {
 							if (chiffresTrouvé[i] == 0) {
-
 								if (i != pos)
 									chiffresTenté[i] = couleur + 1;
 								else
 									chiffresTenté[i] = couleur;
-
 							} else
 								chiffresTenté[i] = chiffresTrouvé[i];
 						}
 						essais--;
 						nombreEssai.setText("Nombre d'essaie restant : " + essais);
-
+						
 						bienplacé = m.nbBienPlace(solution, chiffresTenté, NB_CHIFFRES);
 						malplacé = m.nbCommuns(solution, chiffresTenté, NB_CHIFFRES) - bienplacé;
 						pos++;
-
 						// Boucle pour écrire la saisie dans la texteArea
 						for (int i = 0; i < NB_CHIFFRES; i++)
 							défilement.append(" " + chiffresTenté[i] + " ");
@@ -223,7 +215,6 @@ public class MastermindDefenseur extends Container {
 						défilement.append(" " + malplacé + " chiffre(s) mal placé(s)\n");
 						défilement.append(" " + bienplacé + " chiffre(s) bien placé(s)\n\n");
 					}
-
 					// A la sortie de la boucle, on a la position du chiffre -> pos - 1
 					// On ajoute donc cette boule à la combinaison contenant les
 					// chiffres Trouvées

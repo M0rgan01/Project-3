@@ -1,1 +1,10 @@
-2018-04-24 00:02:12.492 INFO     [main]:fr.jeux.view.Acceuil - Initialisation Acceuil
+2018-04-24 01:34:25.130 INFO     [main]:fr.jeux.view.Acceuil - Initialisation Acceuil
+2018-04-24 01:34:28.127 INFO     [AWT-EventQueue-0]:fr.jeux.model.FichierConfig - Chargement fichier config.properties
+2018-04-24 01:34:28.129 INFO     [AWT-EventQueue-0]:fr.jeux.model.FichierConfig - Initialisation difficulté
+2018-04-24 01:34:28.140 INFO     [AWT-EventQueue-0]:fr.jeux.view.PlusOuMoinsChallenger - Initialisation PlusOuMoinsChallenger
+2018-04-24 01:34:32.116 INFO     [AWT-EventQueue-0]:fr.jeux.model.FichierConfig - Chargement fichier config.properties
+2018-04-24 01:34:32.116 INFO     [AWT-EventQueue-0]:fr.jeux.model.FichierConfig - Initialisation difficulté
+2018-04-24 01:34:32.119 INFO     [AWT-EventQueue-0]:fr.jeux.view.PlusOuMoinsDefenseur - Initialisation PlusOuMoinsDefenseur
+2018-04-24 01:34:34.461 INFO     [AWT-EventQueue-0]:fr.jeux.model.FichierConfig - Chargement fichier config.properties
+2018-04-24 01:34:34.461 INFO     [AWT-EventQueue-0]:fr.jeux.model.FichierConfig - Initialisation difficulté
+2018-04-24 01:34:34.469 INFO     [AWT-EventQueue-0]:fr.jeux.view.MastermindDuel - Initialisation MastermindDuel

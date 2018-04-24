@@ -151,7 +151,6 @@ public class PlusOuMoinsDuel extends Container {
 			b2 = false;
 			nombre_user2 = MaxIA / 2;
 			défilement2.append(" L'ordinateur donne la valeur " + nombre_user2 + "\n");
-
 			if (nombre_secret2 == nombre_user2) {
 				gagné();
 				défilement2.append(" L'ordinateur à gagné !\n");
@@ -171,9 +170,7 @@ public class PlusOuMoinsDuel extends Container {
 			// Nous attribuons le chiffre trouver par l'ia au montant maximal
 			MaxIA = nombre_user2;
 			nombre_user2 = (MaxIA + Min) / 2;
-
 			défilement2.append(" L'ordinateur donne la valeur " + nombre_user2 + "\n");
-
 			if (nombre_secret2 == nombre_user2) {
 				gagné();
 				défilement2.append(" L'ordinateur à gagné !\n");
@@ -187,9 +184,7 @@ public class PlusOuMoinsDuel extends Container {
 			// Nous attribuons le chiffre trouver par l'ia au montant minimal
 			Min = nombre_user2;
 			nombre_user2 = (Min + MaxIA) / 2;
-
 			défilement2.append(" L'ordinateur donne la valeur " + nombre_user2 + "\n");
-
 			if (nombre_secret2 == nombre_user2) {
 				gagné();
 				défilement2.append(" L'ordinateur à gagné !\n");
