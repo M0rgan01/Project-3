@@ -119,7 +119,8 @@ public class PlusOuMoinsDefenseur extends Container {
 		nombre_user = Max / 2;
 
 		// Tant que le nombre de l'ordinateur ne correspond pas au nombre secret
-		while (nombre_secret != nombre_user) {
+		//et qu'il reste des essais
+		while (nombre_secret != nombre_user && essai > 0) {
 			Logging.logger.info("Vérification du nombre");
 
 			// si le montant est supérieurs
@@ -144,12 +145,6 @@ public class PlusOuMoinsDefenseur extends Container {
 				Min = nombre_user;
 				nombre_user = (Min + Max) / 2;
 			}
-
-			// si le nombre d'essais est à 0, nous remplissons les conditions pour sortir de
-			// la boucle
-			if (essai == 0)
-				nombre_secret = nombre_user;
-
 			try {
 				Thread.sleep(2000);
 			} catch (InterruptedException e) {

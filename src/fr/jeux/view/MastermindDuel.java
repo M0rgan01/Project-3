@@ -33,11 +33,9 @@ public class MastermindDuel extends Container {
 					  MAX = FC.getNombreMaxMastermind();
 	private int[] solution = new int[NB_CHIFFRES], 
 				  solutionIA = new int[NB_CHIFFRES];
-	private int essais = FC.getNombreEssai();
 	private String difficulty = FC.getDifficulty();
 	private JLabel titre = new JLabel("Mastermind : Mode Duel"),
-			difficultyLabel = new JLabel("Difficulté : " + difficulty),
-			nombreEssai = new JLabel("Nombre d'essaie restant : " + essais),
+			difficultyLabel = new JLabel("Difficulté : " + difficulty),			
 			annonceLabel = new JLabel("Saisir un nombre :");
 	private JTextArea devArea = new JTextArea(
 			"\tMode développeur activé !\n Réponse du joueur:  " + NB_CHIFFRES + "\tRéponse de l'ordinateur : ");
@@ -67,7 +65,7 @@ public class MastermindDuel extends Container {
 		titre.setHorizontalAlignment(JLabel.CENTER);
 		difficultyLabel.setFont(comics20);
 
-		annonceLabel.setBorder(BorderFactory.createEmptyBorder(10, 70, 10, 0));
+		annonceLabel.setBorder(BorderFactory.createEmptyBorder(10, 240, 10, 0));
 		button.addActionListener(new Listener());
 		button.setPreferredSize(new Dimension(130, 25));
 
@@ -86,7 +84,6 @@ public class MastermindDuel extends Container {
 		défilement2.setEditable(false);
 
 		panelAnnonce.setBackground(Color.white);
-		panelAnnonce.add(nombreEssai);
 		panelAnnonce.add(annonceLabel);
 		for (int i = 0; i < NB_CHIFFRES; i++) {
 			annonce[i] = new JTextField();
@@ -170,13 +167,7 @@ public class MastermindDuel extends Container {
 		if (victoire) {
 			défilement.append(" Félicitation !!!\n");
 			b2 = true;
-			gagné();
-		} else {
-			essais--;
-			nombreEssai.setText("Nombre d'essaie restant : " + essais);
-			if (essais == 0) {
-				perdu();
-			}
+			gagné();		
 		}
 		défilement.append(" " + malplacé + " chiffre(s) mal placé(s)\n");
 		défilement.append(" " + bienplacé + " chiffre(s) bien placé(s)\n\n");
@@ -258,16 +249,14 @@ public class MastermindDuel extends Container {
 						// en cour. Tout en tenant compte des positions des chiffres deja trouvées
 						for (int i = 0; i < NB_CHIFFRES; i++) {
 							if (chiffresTrouvé[i] == 0) {
-
 								if (i != pos)
 									chiffresTenté[i] = couleur + 1;
 								else
 									chiffresTenté[i] = couleur;
-
 							} else
 								chiffresTenté[i] = chiffresTrouvé[i];
 						}
-
+						
 						bienplacé = m.nbBienPlace(solutionIA, chiffresTenté, NB_CHIFFRES);
 						malplacé = m.nbCommuns(solutionIA, chiffresTenté, NB_CHIFFRES) - bienplacé;
 						pos++;
@@ -281,7 +270,6 @@ public class MastermindDuel extends Container {
 
 						if (m.nbBienPlace(solutionIA, chiffresTenté, NB_CHIFFRES) == NB_CHIFFRES)
 							gagné();
-
 						// nous mettons le processus en supsens içi
 						try {
 							synchronized (T) {
@@ -292,7 +280,6 @@ public class MastermindDuel extends Container {
 							e1.printStackTrace();
 						}
 					}
-
 					// A la sortie de la boucle, on a la position du chiffre -> pos - 1
 					// On ajoute donc cette boule à la combinaison contenant les
 					// chiffres Trouvées
@@ -321,12 +308,6 @@ public class MastermindDuel extends Container {
 		}
 	}
 
-	public void perdu() {
-		JOptionPane.showMessageDialog(null, "Vous avez perdu ! La réponse étais " + Arrays.toString(solution) + "\n"
-				+ "Vous pouvez changer de jeu ou recommencer depuis le menu fichier");
-		restart();
-	}
-
 	public void restart() {
 		button.setText("Recommencer ?");
 		for (int i = 0; i < NB_CHIFFRES; i++) {
@@ -349,8 +330,6 @@ public class MastermindDuel extends Container {
 					annonce[i].setEditable(true);
 				}
 				initSolution();
-				essais = FC.getNombreEssai();
-				nombreEssai.setText("Nombre d'essaie restant : " + essais);
 				b = true;
 				b2 = false;
 				b3 = true;

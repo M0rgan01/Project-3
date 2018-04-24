@@ -24,9 +24,7 @@ import fr.jeux.model.TexteFieldControler;
 public class MastermindDefenseur extends Container {
 
 	FichierConfig FC = new FichierConfig();
-	private JPanel panelNord = new JPanel(), 
-				   panelCentre = new JPanel(), 
-				   panelAnnonce = new JPanel();
+	private JPanel panelNord = new JPanel(), panelCentre = new JPanel(), panelAnnonce = new JPanel();
 	private final int NB_CHIFFRES = FC.getNombre_chiffre(), 
 					  MAX = FC.getNombreMaxMastermind();
 	private int essais = FC.getNombreEssai();
@@ -45,6 +43,7 @@ public class MastermindDefenseur extends Container {
 	private JScrollPane scroll = new JScrollPane(défilement);
 	private JTextField[] annonce = new JTextField[NB_CHIFFRES];
 	private JButton button = new JButton("Ok");
+	private boolean restartB = false;
 	private Thread T;
 
 	public MastermindDefenseur() {
@@ -138,7 +137,7 @@ public class MastermindDefenseur extends Container {
 		while (m.nbBienPlace(solution, chiffresTenté, NB_CHIFFRES) < NB_CHIFFRES && essais > 0) {
 
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(2000);
 			} catch (Exception e) {
 			}
 
@@ -167,7 +166,6 @@ public class MastermindDefenseur extends Container {
 			défilement.append(" " + malplacé + " chiffre(s) mal placé(s)\n");
 			défilement.append(" " + bienplacé + " chiffre(s) bien placé(s)\n\n");
 
-			
 			int nbBoules = bienplacé - nbTrouve;
 
 			// Si le chiffre tester est présent et que couleur est supérieur ou égal au max
@@ -187,7 +185,7 @@ public class MastermindDefenseur extends Container {
 						while ((pos < NB_CHIFFRES) && chiffresTrouvé[pos] != 0)
 							pos++;
 						try {
-							Thread.sleep(1000);
+							Thread.sleep(2000);
 						} catch (Exception e) {
 						}
 						// On crée la nouvelle combinaison à tenté, qui cherche
@@ -204,7 +202,7 @@ public class MastermindDefenseur extends Container {
 						}
 						essais--;
 						nombreEssai.setText("Nombre d'essaie restant : " + essais);
-						
+
 						bienplacé = m.nbBienPlace(solution, chiffresTenté, NB_CHIFFRES);
 						malplacé = m.nbCommuns(solution, chiffresTenté, NB_CHIFFRES) - bienplacé;
 						pos++;
@@ -238,27 +236,46 @@ public class MastermindDefenseur extends Container {
 	public void perdu() {
 		JOptionPane.showMessageDialog(null, "L'ordinateur à perdu ! La réponse étais " + Arrays.toString(solution)
 				+ "\n" + "Vous pouvez changer de jeu ou recommencer depuis le menu fichier");
-		for (int i = 0; i < NB_CHIFFRES; i++) {
-			annonce[i].setEditable(false);
-		}
-		button.setEnabled(false);
+		restart();
 	}
 
 	public void gagné() {
 		JOptionPane.showMessageDialog(null, "L'ordinateur à trouver le nombre secret !\n"
 				+ "Vous pouvez changer de jeu ou recommencer depuis le menu fichier");
+		restart();
+	}
+
+	public void restart() {
+		button.setText("Recommencer ?");
+		restartB = true;
+		button.setEnabled(true);
 		for (int i = 0; i < NB_CHIFFRES; i++) {
-			annonce[i].setEditable(false);
+			annonce[i].setText("");
 		}
-		button.setEnabled(false);
 	}
 
 	public class Listener implements ActionListener {
 
 		public void actionPerformed(ActionEvent arg0) {
-			T = new Thread(new IA());
-			T.start();
-			défilement.append(" L'ordinateur commence à chercher la bonne réponse :\n");
+			if (restartB) {
+				Logging.logger.info("Restart : génération d'une nouvelle partie");
+				défilement.setText("");
+				button.setText("OK");
+				for (int i = 0; i < NB_CHIFFRES; i++) {
+					annonce[i].setEditable(true);
+				}
+				essais = FC.getNombreEssai();
+				nombreEssai.setText("Nombre d'essaie restant : " + essais);
+				restartB = false;
+			} else {
+				T = new Thread(new IA());
+				T.start();
+				défilement.append(" L'ordinateur commence à chercher la bonne réponse :\n");
+				for (int i = 0; i < NB_CHIFFRES; i++) {
+					annonce[i].setEditable(false);
+				}
+				button.setEnabled(false);
+			}
 		}
 	}
 
@@ -267,5 +284,4 @@ public class MastermindDefenseur extends Container {
 			startIA();
 		}
 	}
-
 }

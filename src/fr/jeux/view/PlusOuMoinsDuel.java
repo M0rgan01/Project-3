@@ -28,19 +28,15 @@ public class PlusOuMoinsDuel extends Container {
 				   panelCentre = new JPanel(), 
 				   panelAnnonce = new JPanel(),
 				   panelScroll = new JPanel();
-	private int Min = 0,
-				Max = FC.getNombreMax(), 
-				MaxIA = FC.getNombreMax(),
-				nombre_secret = random.nextInt(Max - 1) + 1, 
-				nombre_secret2 = 0, 
-				nombre_user = 0, 
-				nombre_user2 = 0,
-				essai = FC.getNombreEssai();
+	private int Min = 0, 
+			    Max = FC.getNombreMax(), 
+			    MaxIA = FC.getNombreMax(),
+			    nombre_secret = random.nextInt(Max - 1) + 1, 
+			    nombre_secret2 = 0, nombre_user = 0, 
+			    nombre_user2 = 0;
 	private String difficulty = FC.getDifficulty();
 	private JLabel titre = new JLabel("Plus ou moins : Mode Duel"),
-			difficultyLabel = new JLabel("Difficulté : " + difficulty),
-			nombreEssai = new JLabel("Nombre d'essaie restant : " + essai),
-			annonceLabel = new JLabel("Saisir un nombre :");
+			difficultyLabel = new JLabel("Difficulté : " + difficulty), annonceLabel = new JLabel("Saisir un nombre :");
 	private JTextArea devArea = new JTextArea(
 			"\tMode développeur activé !\n Réponse du joueur:  " + nombre_secret + "\tRéponse de l'ordinateur : ");
 	private JTextArea explication = new JTextArea("Saissisez un nombre entre " + Min + " et " + Max
@@ -69,7 +65,7 @@ public class PlusOuMoinsDuel extends Container {
 		TexteFieldControler TFLC = new TexteFieldControler(annonce);
 		annonce.addKeyListener(TFLC);
 		annonce.setPreferredSize(new Dimension(60, 25));
-		annonceLabel.setBorder(BorderFactory.createEmptyBorder(10, 130, 10, 0));
+		annonceLabel.setBorder(BorderFactory.createEmptyBorder(10, 300, 10, 0));
 		button.addActionListener(new Listener());
 		button.setPreferredSize(new Dimension(130, 25));
 
@@ -88,7 +84,6 @@ public class PlusOuMoinsDuel extends Container {
 		défilement2.setEditable(false);
 
 		panelAnnonce.setBackground(Color.white);
-		panelAnnonce.add(nombreEssai);
 		panelAnnonce.add(annonceLabel);
 		panelAnnonce.add(annonce);
 		panelAnnonce.add(button);
@@ -127,20 +122,10 @@ public class PlusOuMoinsDuel extends Container {
 		if (nombre_secret == nombre_user) {
 			défilement.append(" Vous avez gagnez !");
 			gagné();
-
 		} else if (nombre_user > nombre_secret) {
 			défilement.append(" Votre nombre est trop grand\n" + "   -------------------------------\n");
-			essai--;
-			nombreEssai.setText("Nombre d'essaie restant : " + essai);
-			if (essai == 0)
-				perdu();
-
 		} else {
 			défilement.append(" Votre nombre est trop petit\n" + "   -------------------------------\n");
-			essai--;
-			nombreEssai.setText("Nombre d'essaie restant : " + essai);
-			if (essai == 0)
-				perdu();
 		}
 	}
 
@@ -153,16 +138,13 @@ public class PlusOuMoinsDuel extends Container {
 			défilement2.append(" L'ordinateur donne la valeur " + nombre_user2 + "\n");
 			if (nombre_secret2 == nombre_user2) {
 				gagné();
-				défilement2.append(" L'ordinateur à gagné !\n");
-				défilement2.append(" -----------------------------\n");
+				TexteGagnéIA();
 			}
 			if (nombre_secret2 < nombre_user2) {
-				défilement2.append(" Le nombre trouver par l'ordinateur est trop grand\n");
-				défilement2.append(" -----------------------------\n");
+				TexteSupérieurIA();
 			}
 			if (nombre_secret2 > nombre_user2) {
-				défilement2.append(" Le nombre trouver par l'ordinateur est trop petit\n");
-				défilement2.append(" -----------------------------\n");
+				TexteInférieurIA();
 			}
 		}
 		// si le montant est supérieurs
@@ -173,12 +155,11 @@ public class PlusOuMoinsDuel extends Container {
 			défilement2.append(" L'ordinateur donne la valeur " + nombre_user2 + "\n");
 			if (nombre_secret2 == nombre_user2) {
 				gagné();
-				défilement2.append(" L'ordinateur à gagné !\n");
-				défilement2.append(" -----------------------------\n");
-			} else {
-				défilement2.append(" Le nombre trouver par l'ordinateur est trop grand\n");
-				défilement2.append(" -----------------------------\n");
-			}
+				TexteGagnéIA();
+			} else if (nombre_secret2 < nombre_user2) {
+				TexteSupérieurIA();
+			} else
+				TexteInférieurIA();
 			// sinon il est inférieur
 		} else {
 			// Nous attribuons le chiffre trouver par l'ia au montant minimal
@@ -187,19 +168,27 @@ public class PlusOuMoinsDuel extends Container {
 			défilement2.append(" L'ordinateur donne la valeur " + nombre_user2 + "\n");
 			if (nombre_secret2 == nombre_user2) {
 				gagné();
-				défilement2.append(" L'ordinateur à gagné !\n");
-				défilement2.append(" -----------------------------\n");
-			} else {
-				défilement2.append(" Le nombre trouver par l'ordinateur est trop petit\n");
-				défilement2.append(" -----------------------------\n");
-			}
+				TexteGagnéIA();
+			} else if (nombre_secret2 < nombre_user2) {
+				TexteSupérieurIA();
+			} else
+				TexteInférieurIA();
 		}
 	}
 
-	public void perdu() {
-		JOptionPane.showMessageDialog(null, "Vous avez perdu ! La réponse étais " + nombre_secret + "\n"
-				+ "Vous pouvez changer de jeu ou recommencer depuis le menu fichier");
-		restart();
+	public void TexteSupérieurIA() {
+		défilement2.append(" Le nombre trouver par l'ordinateur est trop grand\n");
+		défilement2.append(" -----------------------------\n");
+	}
+
+	public void TexteInférieurIA() {
+		défilement2.append(" Le nombre trouver par l'ordinateur est trop petit\n");
+		défilement2.append(" -----------------------------\n");
+	}
+
+	public void TexteGagnéIA() {
+		défilement2.append(" L'ordinateur à gagné !\n");
+		défilement2.append(" -----------------------------\n");
 	}
 
 	public void gagné() {
@@ -207,10 +196,9 @@ public class PlusOuMoinsDuel extends Container {
 			JOptionPane.showMessageDialog(null, "Vous avez trouvé le nombre secret !\n"
 					+ "Vous pouvez changer de jeu ou recommencer depuis le menu fichier");
 			restart();
-
 		} else {
-			JOptionPane.showMessageDialog(null, "L'ordinateur a trouvé le nombre secret !\n"
-					+ "Vous pouvez changer de jeu ou recommencer depuis le menu fichier");
+			JOptionPane.showMessageDialog(null, "L'ordinateur a trouvé le nombre secret !\n" + "La réponse étais "
+					+ nombre_secret + "\n" + "Vous pouvez changer de jeu ou recommencer depuis le menu fichier");
 			restart();
 		}
 	}
@@ -254,8 +242,6 @@ public class PlusOuMoinsDuel extends Container {
 				Min = 0;
 				b = true;
 				b2 = true;
-				essai = FC.getNombreEssai();
-				nombreEssai.setText("Nombre d'essaie restant : " + essai);
 			}
 
 			// nous vérifions que les données saisies sont conforment

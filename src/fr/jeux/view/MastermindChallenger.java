@@ -196,7 +196,6 @@ public class MastermindChallenger extends Container {
 				essais = FC.getNombreEssai();
 				nombreEssai.setText("Nombre d'essaie restant : " + essais);
 				restartB = false;
-
 			} else {
 				start();
 				for (int i = 0; i < NB_CHIFFRES; i++) {
