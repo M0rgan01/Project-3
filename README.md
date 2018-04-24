@@ -15,7 +15,8 @@ le premier à trouver la combinaison secrète de l'autre a gagné.
 ## Installation
 - Cloner le repository
 - Lancez un IDE
-- Créer un nouveau projet et y ajouter les dossier du repository
+- Créer un nouveau projet avec le repository cloner
+- Ajouter log4j à la librairie du projet
 - Utiliser la classe Driver du package fr.jeux pour lancez l'application
 
 ## Configuration
